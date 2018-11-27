@@ -19,4 +19,6 @@ exports.login = (req, res) => {
         }
     );
 };
-exports.admin = (req, res) => {};
+exports.admin = (req, res) => {
+    
+};
