@@ -1,5 +1,7 @@
 const common = require("../common");
 const model = require("../model.js");
+const os = require('os');
+const cfg = require('../config')
 exports.index = (req, res) => {
     if (req.session.userInfo) {
         res.redirect('/admin/admin');
@@ -28,7 +30,30 @@ exports.login = (req, res) => {
     );
 };
 exports.admin = (req, res) => {
-    if (req.session.userInfo)
-        res.send(`管理页面`);
-    else res.redirect('/admin/index')
+    if (req.session.userInfo) {
+        var res_data = {
+            sys_type: os.type(),
+            sys_ver: os.release(),
+            server: process.argv0,
+            sess_admin: req.session.userInfo
+        };
+
+        common.renderTemp(res, 'admin/admin.html', res_data);
+
+
+    } else res.redirect('/admin/index')
 };
+exports.logout = (req, res) => {
+    req.session.destroy(() => {
+        // common.res(res, '退出成功', null, 1);
+        res.redirect('/admin/index');
+    })
+
+}
+exports.menuList = (req, res) => {
+    common.res(res, '获取数据成功', cfg.ADMIN_MENU_LIST)
+}
+exports.dataClassList = (req, res) => {
+
+
+}

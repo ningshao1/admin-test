@@ -20,14 +20,14 @@ app.use(session({ //传入中间件函数，参数是一个对象
     resave: false,
     saveUninitialized: true,
     cookie: {
-        maxAge: 1000 * 60,
+        maxAge: 1000 * 60 * 60,
         httpOnly: true
     },
     rolling: true
 }));
 app.use(express.static("static"));
 app.use(route);
-
+app.disable('view cache');
 const server = app.listen(config.cfg.port, "127.0.0.1", () => {
     const url = `http://${server.address().address}:${server.address().port}/admin/index`
     switch (process.platform) {
