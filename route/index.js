@@ -15,4 +15,6 @@ router.get(`/admin/admin`, handler.admin);
 router.get(`/admin/ajax_menu_list`, handler.menuList)
 router.get(`/admin/ajax_dataclass_list`, handler.dataClassList);
 router.get(`/admin/ajax_logout`, handler.logout);
+router.get(`/admin/ajax_dataclass_add`, handler.dataClassAdd);
+router.get(`/admin/ajax_dataclass_get`,handler.dataClassGet)
 module.exports = router;

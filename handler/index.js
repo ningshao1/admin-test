@@ -54,6 +54,41 @@ exports.menuList = (req, res) => {
     common.res(res, '获取数据成功', cfg.ADMIN_MENU_LIST)
 }
 exports.dataClassList = (req, res) => {
+    let type = 1;
+    if (req.query.type) {
+        type = parseInt(req.query.type);
+    }
+    model.dataClass.find({
+        type
+    }).exec((err, data) => {
+        common.res(res, '获取数据成功', data)
+    })
 
+}
+exports.dataClassAdd = (req, res) => {
+    let id = req.query.id || 0;
+    if (req.query.id) {
 
+    } else {
+        const options = {
+            name: req.query.name,
+            sort: parseInt(req.query.sort),
+            type: parseInt(req.query.type)
+        }
+
+        model.dataClass.create(options, (err, data) => {
+            common.res(res, '添加成功');
+        })
+    }
+}
+exports.dataClassGet = (req, res) => {
+
+    model.dataClass.findOne({
+        id: req.query.id
+    }).exec((error, data) => {
+        if (error) {
+            return
+        }
+        common.res(res, '添加成功', data);
+    })
 }

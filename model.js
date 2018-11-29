@@ -9,3 +9,13 @@ userSchema.statics = {
     }
 };
 exports.users = mongoose.model("user", userSchema, "user");
+//dataClass 模型
+var dataClass = new mongoose.Schema({
+    id: Number,
+    name: String,
+    sort: Number,
+    type: Number
+}, {
+    versionKey: false
+});
+exports.dataClass = mongoose.model("dataClass", dataClass, "dataClass");

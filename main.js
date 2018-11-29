@@ -30,6 +30,7 @@ app.use(route);
 app.disable('view cache');
 const server = app.listen(config.cfg.port, "127.0.0.1", () => {
     const url = `http://${server.address().address}:${server.address().port}/admin/index`
+    return;
     switch (process.platform) {
         //mac系统使用 一下命令打开url在浏览器
         case "darwin":
