@@ -8,7 +8,7 @@ userSchema.statics = {
         this.findOne(userInfo).exec(cb);
     }
 };
-exports.users = mongoose.model("user", userSchema, "user");
+exports.users = mongoose.model("user", userSchema);
 //dataClass 模型
 var dataClass = new mongoose.Schema({
     id: Number,
@@ -18,4 +18,29 @@ var dataClass = new mongoose.Schema({
 }, {
     versionKey: false
 });
-exports.dataClass = mongoose.model("dataClass", dataClass, "dataClass");
+exports.dataClass = mongoose.model("dataclass", dataClass, "dataclass");
+var counts = new mongoose.Schema({
+    _id: String,
+    number: Number
+})
+counts.statics = {
+    addNumber(id, cb) {
+        console.log(this.findOneAndUpdate())
+        this.findOneAndUpdate({
+            query: {
+                _id: id
+            },
+            update: {
+                $inc: {
+                    number: 1
+                }
+            },
+            function (err, data) {
+                console.log(err)
+                console.log(data)
+            }
+        })
+    }
+
+}
+exports.count = mongoose.model('couter', counts)

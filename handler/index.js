@@ -73,7 +73,8 @@ exports.dataClassAdd = (req, res) => {
         const options = {
             name: req.query.name,
             sort: parseInt(req.query.sort),
-            type: parseInt(req.query.type)
+            type: parseInt(req.query.type),
+            id: model.count.addNumber('dataClassId')
         }
 
         model.dataClass.create(options, (err, data) => {

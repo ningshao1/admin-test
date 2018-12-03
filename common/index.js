@@ -19,3 +19,4 @@ exports.res = (res, desc, data = null, code = 0) => {
   };
   res.send(ResData);
 };
+exports.selfAdd = () => {}
