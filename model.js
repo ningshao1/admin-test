@@ -73,3 +73,4 @@ var single = new mongoose.Schema({
     name: String
 })
 exports.singles = mongoose.model('district', single);
+ 
