@@ -32,3 +32,4 @@ router.get(`/admin/ajax_admin_list`, handler.adminList);
 router.get(`/admin/ajax_admin_del`, handler.adminDel);
 router.get(`/admin/ajax_admin_add`, handler.adminAdd);
 module.exports = router;
+
