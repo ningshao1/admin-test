@@ -1,12 +1,12 @@
 const express = require("express");
 const config = require("./config");
 const route = require("./route");
-
 const { exec } = require("child_process");
 const app = express();
 const mongoose = require("mongoose");
 const session = require("express-session");
 var MongoStore = require("connect-mongo")(session);
+var common = require("./common/index.js")
 mongoose.connect(
     `mongodb://106.14.124.207:27017/TEST_NAME`, {
         useNewUrlParser: true
@@ -37,7 +37,8 @@ app.use(express.static(__dirname + "\\static"));
 app.use(route);
 app.disable("view cache");
 const server = app.listen(config.cfg.port, "0.0.0.0", () => {
-    const url = `http://${server.address().address}:${
+
+    const url = `http://${common.getIp()}:${
     server.address().port
   }/admin/index`;
     switch (process.platform) {
